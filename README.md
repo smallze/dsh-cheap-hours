@@ -1,5 +1,7 @@
 # dsh-cheap-hours
 
+[中文](./README.md) | [English](./README.en.md)
+
 DeepSeek Harness 插件：用 `/cheap`（别名 `/nap`）把任务排到 DeepSeek **低峰**再跑。作者：zesheng.zhou
 
 默认高峰（北京时间，可改）：**09:00–12:00、14:00–18:00**。其余为空闲时段，单价大约是高峰一半。
@@ -23,6 +25,26 @@ dsh plugin --profile web add %USERPROFILE%\.dsh\local-plugins\dsh-cheap-hours
 改代码后执行 `npm run build`，再重启 `dsh web`。
 
 `dsh web` 必须一直开着，低峰到点才会投递。若进程在低峰时没起来，下次启动若已在低峰会立刻补发。
+
+## 在其他机器部署
+
+推荐直接从 GitHub 安装：
+
+```powershell
+dsh plugin --profile web add https://github.com/smallze/dsh-cheap-hours
+dsh web
+```
+
+可选配置（改高峰窗口），编辑 `%USERPROFILE%\.dsh\profiles\web\cordis.patch.yml`：
+
+```yaml
+- id: cheap-hours
+  config:
+    timezone: Asia/Shanghai
+    peakWindows:
+      - { start: "09:00", end: "12:00" }
+      - { start: "14:00", end: "18:00" }
+```
 
 ## 斜杠指令
 
