@@ -1,0 +1,8 @@
+- insert:
+    - id: cheap-hours
+      name: dsh-cheap-hours
+      config:
+        timezone: Asia/Shanghai
+        peakWindows:
+          - { start: "09:00", end: "12:00" }
+          - { start: "14:00", end: "18:00" }
